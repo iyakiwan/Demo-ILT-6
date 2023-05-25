@@ -17,6 +17,7 @@ import com.mufti.bangkit.learn.ilt6.myapplication.model.HeroesData
 import com.mufti.bangkit.learn.ilt6.myapplication.ui.navigation.BottomBar
 import com.mufti.bangkit.learn.ilt6.myapplication.ui.navigation.Screen
 import com.mufti.bangkit.learn.ilt6.myapplication.ui.screen.about.AboutScreen
+import com.mufti.bangkit.learn.ilt6.myapplication.ui.screen.detail.DetailScreen
 import com.mufti.bangkit.learn.ilt6.myapplication.ui.screen.home.HomeScreen
 import com.mufti.bangkit.learn.ilt6.myapplication.ui.theme.MyApplicationTheme
 
@@ -46,8 +47,8 @@ fun MyApplicationApp(
             composable(Screen.Home.route) {
                 HomeScreen(
                     listHero = HeroesData.heroes,
-                    navigateToDetail = { username ->
-                        navController.navigate(Screen.DetailHeroes.createRoute(username))
+                    navigateToDetail = { id ->
+                        navController.navigate(Screen.DetailHeroes.createRoute(id))
                     },
                 )
             }
@@ -58,16 +59,13 @@ fun MyApplicationApp(
                 route = Screen.DetailHeroes.route,
                 arguments = listOf(navArgument("id") { type = NavType.StringType }),
             ) {
-                val username = it.arguments?.getString("id") ?: ""
-                /*DetailScreen(
-                    username = username,
-                    viewModel = viewModel(
-                        factory = ViewModelFactory.getInstance(context)
-                    ),
+                val idHero = it.arguments?.getString("id") ?: ""
+                DetailScreen(
+                    id = idHero,
                     navigateBack = {
                         navController.navigateUp()
                     },
-                )*/
+                )
             }
         }
     }

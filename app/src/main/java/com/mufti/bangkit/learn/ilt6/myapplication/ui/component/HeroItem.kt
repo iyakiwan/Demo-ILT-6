@@ -2,10 +2,9 @@ package com.mufti.bangkit.learn.ilt6.myapplication.ui.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,9 +24,7 @@ fun HeroItem(
     modifier: Modifier = Modifier
 ) {
     Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-        ),
+        backgroundColor = MaterialTheme.colors.primary,
         shape = MaterialTheme.shapes.medium,
         modifier = modifier.padding(vertical = 4.dp, horizontal = 8.dp)
     ) {
@@ -55,14 +52,14 @@ fun HeroItem(
                     text = hero.name,
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.titleMedium.copy(
+                    style = MaterialTheme.typography.subtitle1.copy(
                         fontWeight = FontWeight.ExtraBold
                     )
                 )
                 Text(
                     text = hero.id,
-                    color = MaterialTheme.colorScheme.secondary,
-                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colors.secondary,
+                    style = MaterialTheme.typography.subtitle2,
                 )
             }
         }
@@ -72,7 +69,7 @@ fun HeroItem(
 @Composable
 @Preview(showBackground = true)
 fun CartItemPreview() {
-    MyApplicationTheme() {
+    MyApplicationTheme {
         HeroItem(
             hero = Hero(
                 id ="1",
